@@ -41,8 +41,11 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
           
-      - name: 4. Build your Jakarta web app with maven
-        run: echo mvn -B package --file pom.xml
+      - name: 3. Have Github action build maven projects
+        run: mvn -B package --file pom.xml
+          
+      #- name: 4. Build your Jakarta web app with maven
+       # run: echo mvn -B package --file pom.xml
         
       - name: 5. Build your selenium tests
         run: |
