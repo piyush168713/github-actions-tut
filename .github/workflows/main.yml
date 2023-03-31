@@ -47,7 +47,7 @@ jobs:
       #- name: 4. Build your Jakarta web app with maven
        # run: echo mvn -B package --file pom.xml
        
-       #lec-8
+       #lec-8 - cache-maven-dependencies
       - name: Set up cache for maven
         uses: actions/cache@v3
         with:
