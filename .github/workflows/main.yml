@@ -30,10 +30,17 @@ jobs:
       - name: 2. checkout the main github branch
         uses: actions/checkout@v3
       
-      - name: 3. Set up JDK 1.8
-        uses: actions/setup-java@v1
+      #- name: 3. Set up JDK 1.8
+       # uses: actions/setup-java@v1
+        #with:
+         # java-version: 1.8
+          
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 1.8
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
+          cache: 'maven'
           
       - name: 4. Build your Jakarta web app with maven
         run: echo mvn -B package --file pom.xml
@@ -58,38 +65,4 @@ jobs:
 
       - name: 7. log the post-build disc space
         run: df
-        
-        
-
-#job 2
-
-  # This workflow contains a single job called "build"
-  build-on-windows:
-    # The type of runner that the job will run on
-    runs-on: windowa-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      
-      - name: 1. log the pre-build disc space
-        run: ls
-      
-      - name: 2. checkout the main github branch
-        uses: actions/checkout@v3
-      
-      - name: 3. Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-          
-      - name: 4. Build your Jakarta web app with maven
-        run: echo mvn -B package --file pom.xml
-        
-      - name: 5. Check windows execution policy
-        run: |
-          echo Here is the windows ExecutionPolicy:
-          echo Get-ExecutionPolicy
-
-      - name: 6. List windows env
-        run: env
+ 
