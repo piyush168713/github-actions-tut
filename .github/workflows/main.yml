@@ -40,7 +40,6 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
-          cache: 'maven'
           
       - name: 4. Build your Jakarta web app with maven
         run: echo mvn -B package --file pom.xml
