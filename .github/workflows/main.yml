@@ -46,6 +46,15 @@ jobs:
           
       #- name: 4. Build your Jakarta web app with maven
        # run: echo mvn -B package --file pom.xml
+       
+       #lec-8
+      - name: Set up cache for maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+     
         
       - name: 5. Build your selenium tests
         run: |
