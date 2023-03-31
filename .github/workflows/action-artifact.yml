@@ -4,25 +4,24 @@ on:
   push:
     branches: [ "main" ]
   
-  
-archive-build-artifact:
-  build-on-ubuntu:
-    runs-on: ubuntu-latest
+jobs:
+  archive-build-artifact:
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: 1. Create a temp artifact downloads folder 
-        run: mkdir downloads
-        
-      - name: 2. Add artifacts to pushlish to the temp folder
-        run: |
-          cd downloads
-          echo 'alpha' > alpha.html
-          echo 'bravo' > bravo.html
-          echo 'charlie' > charlie.html
-          cd ..
-          
-       - name: 3. Use the upload artifact Github action
-         uses: actions/upload-artifact@v3
-         with:
-          name: assets-for-download
-          path: downloads
+      steps:
+        - name: 1. Create a temp artifact downloads folder 
+          run: mkdir downloads
+
+        - name: 2. Add artifacts to pushlish to the temp folder
+          run: |
+            cd downloads
+            echo 'alpha' > alpha.html
+            echo 'bravo' > bravo.html
+            echo 'charlie' > charlie.html
+            cd ..
+
+        - name: 3. Use the upload artifact Github action
+          uses: actions/upload-artifact@v3
+          with:
+            name: assets-for-download
+            path: downloads
